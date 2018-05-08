@@ -1,0 +1,34 @@
+﻿生成启动时间为 2018/5/8 14:49:34。
+     1>项目“D:\mysher\YOUNG\SDL_Camera\src\sdl_Camera\sdl_Camera.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\sdl_Camera.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\sdl_Camera.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt sdl_Preview.cpp
+         sdl_Preview.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\mysher\YOUNG\SDL_Camera\src\..\Debug\sdl_Camera.exe" /INCREMENTAL /NOLOGO strmbasd.lib /MANIFEST /ManifestFile:"Debug\sdl_Camera.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\mysher\YOUNG\SDL_Camera\Debug\sdl_Camera.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\mysher\YOUNG\SDL_Camera\src\..\Debug\sdl_Camera.lib" /MACHINE:X86 Debug\sdl_Camera.res
+         Debug\sdl_Camera.exe.embed.manifest.res
+         Debug\sdl_Camera.obj
+         Debug\sdl_CameraDlg.obj
+         Debug\sdl_Preview.obj
+         Debug\stdafx.obj
+         Debug\Young_CCamera.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\sdl_Camera.exe.embed.manifest" /manifest Debug\sdl_Camera.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         sdl_Camera.vcxproj -> D:\mysher\YOUNG\SDL_Camera\src\..\Debug\sdl_Camera.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\sdl_Camera.unsuccessfulbuild”。
+         正在对“Debug\sdl_Camera.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\mysher\YOUNG\SDL_Camera\src\sdl_Camera\sdl_Camera.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.34
