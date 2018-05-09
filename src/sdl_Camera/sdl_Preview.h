@@ -17,9 +17,13 @@ public:
 	SDL_Renderer * pRender;
 	SDL_Texture * pTexture ;
 	SDL_Rect dstRect;
+	SDL_Event event;
 public:
 	long sdl_Init(void);
+	long sdl_Unit(void);
 	long SetHwnd(HWND hWnd,int width,int height);
 	long sdl_PreviewImage(BYTE * buf, int width,int height);
-
+	long sdl_DrawLine();
+	void sdl_ZoomIn();
+	void sdl_ZoomOut();
 };

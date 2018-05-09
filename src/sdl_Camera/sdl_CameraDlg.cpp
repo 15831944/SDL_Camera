@@ -70,6 +70,8 @@ BEGIN_MESSAGE_MAP(Csdl_CameraDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_btn_DrawRect, &Csdl_CameraDlg::OnBnClickedbtnDrawrect)
+	ON_BN_CLICKED(IDC_btn_OpenCamera, &Csdl_CameraDlg::OnBnClickedbtnOpencamera)
 END_MESSAGE_MAP()
 
 
@@ -109,8 +111,7 @@ BOOL Csdl_CameraDlg::OnInitDialog()
 	m_CCamera.camRegCallBackPreviewImage(cbPreviewImage);
 	m_Csdl_Preview.sdl_Init();
 	m_Csdl_Preview.SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),640,480);
-	m_CCamera.OpenCamera(0,640,480);
-	m_CCamera.Start();
+
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -165,3 +166,20 @@ HCURSOR Csdl_CameraDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void Csdl_CameraDlg::OnBnClickedbtnDrawrect()
+{
+	// TODO: 在此添加控件通知处理程序代码
+
+	m_Csdl_Preview.sdl_DrawLine();
+
+}
+
+
+void Csdl_CameraDlg::OnBnClickedbtnOpencamera()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_CCamera.OpenCamera(0,640,480);
+	m_CCamera.Start();
+}

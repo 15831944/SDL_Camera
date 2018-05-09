@@ -37,4 +37,6 @@ protected:
 public:
 		CCamera m_CCamera;
 		Csdl_Preview m_Csdl_Preview;
+		afx_msg void OnBnClickedbtnDrawrect();
+		afx_msg void OnBnClickedbtnOpencamera();
 };
