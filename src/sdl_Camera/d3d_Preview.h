@@ -16,6 +16,6 @@ public:
 	IDirect3DSurface9 *m_pDirect3DSurfaceRender  ;
 	RECT m_rtViewport;
 	void Cleanup();
-	int InitD3D( HWND hwnd, unsigned long lWidth, unsigned long lHeight );
+	int InitD3D( HWND hwnd, unsigned long lWidth, unsigned long lHeight);
 	bool Render(byte*src);
 };

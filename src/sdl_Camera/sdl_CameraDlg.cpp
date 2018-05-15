@@ -7,11 +7,10 @@
 #include "sdl_CameraDlg.h"
 #include "afxdialogex.h"
 
-int HEIGHT = 2592;
-int WIDTH = 1944;
+int HEIGHT = 1944;
+int WIDTH = 2592;
 #define  SDLorD3D 0
-#define YUVPLANE WIDTH*HEIGHT*3/2  
-#define RGBPLANE WIDTH*HEIGHT*4  
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -24,15 +23,6 @@ static bool CALLBACK cbPreviewImage(byte * src,long width,long height,long size)
 #if SDLorD3D
 	m_Csdl_CameraDlg->m_Csdl_Preview.sdl_PreviewImage(src,width,height);
 #else
- //   BYTE*   rgbbuf = new BYTE[RGBPLANE];   
-	//m_Csdl_CameraDlg->m_CColourSpaceConvert.YUV2RGB(src,   
-	//	src + HEIGHT*WIDTH*5/4,   
-	//	src + HEIGHT*WIDTH,  
-	//	rgbbuf, WIDTH, HEIGHT);  
-	//m_Csdl_CameraDlg->m_Cd3d_Preview.RenderSample(rgbbuf);
- //   m_Csdl_CameraDlg->m_Cd3d_Preview.RenderTOSrceen();   
-	//delete []rgbbuf;
-	//rgbbuf = NULL;
 	m_Csdl_CameraDlg->m_Cd3d_Preview.Render(src);
 
 #endif
@@ -135,14 +125,11 @@ BOOL Csdl_CameraDlg::OnInitDialog()
 	m_CCamera.camRegCallBackPreviewImage(cbPreviewImage);
 
 #if SDLorD3D
-	m_Csdl_Preview.sdl_SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),HEIGHT,WIDTH);
+	m_Csdl_Preview.sdl_SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),WIDTH,HEIGHT);
 #else
-	//m_Cd3d_Preview.InitD3D(GetDlgItem(IDC_Preview)->GetSafeHwnd());
-	//m_Cd3d_Preview.CreateTexture();  
-	//m_Cd3d_Preview.InitGeometry();  
 	//RECT rect;
 	//GetDlgItem(IDC_Preview)->GetWindowRect(&rect);
-	m_Cd3d_Preview.InitD3D(GetDlgItem(IDC_Preview)->GetSafeHwnd(),HEIGHT,WIDTH);
+	m_Cd3d_Preview.InitD3D(GetDlgItem(IDC_Preview)->GetSafeHwnd(),WIDTH,HEIGHT);
 #endif
 
 
@@ -216,7 +203,7 @@ void Csdl_CameraDlg::OnBnClickedbtnDrawrect()
 void Csdl_CameraDlg::OnBnClickedbtnOpencamera()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_CCamera.OpenCamera(0,HEIGHT,WIDTH);
+	m_CCamera.OpenCamera(0,WIDTH,HEIGHT);
 	m_CCamera.Start();
 }
 

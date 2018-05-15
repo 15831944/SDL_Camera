@@ -47,6 +47,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\DXSDK\Include;D:\DXSDK\Samples\C++\Common\Include;D:\DXSDK\Samples\C++\DirectShow\BaseClasses;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\DXSDK\Lib;D:\DXSDK\Samples\C++\DirectShow\BaseClasses\Release_Unicode;D:\DXSDK\Samples\C++\DirectShow\BaseClasses\Debug_Unicode;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
