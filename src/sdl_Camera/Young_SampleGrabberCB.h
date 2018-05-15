@@ -14,7 +14,7 @@ class CSampleGrabberCB: public ISampleGrabberCB
 	public:
 	    STDMETHODIMP BufferCB(double dblSampleTime, BYTE* pBuffer, long lBufferSize)
 		{
-			m_pPutImage(pBuffer,640,480,lBufferSize);
+			m_pPutImage(pBuffer,2592,1944,lBufferSize);
 			return 1;
 		}
 		STDMETHODIMP SampleCB(double dblSampleTime, IMediaSample *pSample){return 1;}

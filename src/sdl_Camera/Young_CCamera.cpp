@@ -170,7 +170,7 @@ bool CCamera::CreateSampleGrabber(CComPtr<IBaseFilter> &pGrabberFilter, CComPtr<
 	AM_MEDIA_TYPE mt;
 	ZeroMemory(&mt, sizeof(AM_MEDIA_TYPE));
 	mt.majortype = MEDIATYPE_Video;
-	mt.subtype = MEDIASUBTYPE_YUY2;//出图格式
+	mt.subtype = MEDIASUBTYPE_RGB24 /*MEDIASUBTYPE_YUY2*/;//出图格式  YOUNG
 	hr = pGrabber->SetMediaType(&mt);
 	if (!SUCCEEDED(hr))
 	{

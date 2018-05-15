@@ -7,14 +7,36 @@
 #include "sdl_CameraDlg.h"
 #include "afxdialogex.h"
 
+int HEIGHT = 2592;
+int WIDTH = 1944;
+#define  SDLorD3D 0
+#define YUVPLANE WIDTH*HEIGHT*3/2  
+#define RGBPLANE WIDTH*HEIGHT*4  
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 Csdl_CameraDlg *m_Csdl_CameraDlg;
+
 //YOUNG callback
 static bool CALLBACK cbPreviewImage(byte * src,long width,long height,long size)
 {
+#if SDLorD3D
 	m_Csdl_CameraDlg->m_Csdl_Preview.sdl_PreviewImage(src,width,height);
+#else
+ //   BYTE*   rgbbuf = new BYTE[RGBPLANE];   
+	//m_Csdl_CameraDlg->m_CColourSpaceConvert.YUV2RGB(src,   
+	//	src + HEIGHT*WIDTH*5/4,   
+	//	src + HEIGHT*WIDTH,  
+	//	rgbbuf, WIDTH, HEIGHT);  
+	//m_Csdl_CameraDlg->m_Cd3d_Preview.RenderSample(rgbbuf);
+ //   m_Csdl_CameraDlg->m_Cd3d_Preview.RenderTOSrceen();   
+	//delete []rgbbuf;
+	//rgbbuf = NULL;
+	m_Csdl_CameraDlg->m_Cd3d_Preview.Render(src);
+
+#endif
+
 	return true;
 }
 //YOUNG callback
@@ -72,6 +94,8 @@ BEGIN_MESSAGE_MAP(Csdl_CameraDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_btn_DrawRect, &Csdl_CameraDlg::OnBnClickedbtnDrawrect)
 	ON_BN_CLICKED(IDC_btn_OpenCamera, &Csdl_CameraDlg::OnBnClickedbtnOpencamera)
+	ON_BN_CLICKED(IDC_btn_Zoomin, &Csdl_CameraDlg::OnBnClickedbtnZoomin)
+	ON_BN_CLICKED(IDC_btn_Zoomout, &Csdl_CameraDlg::OnBnClickedbtnZoomout)
 END_MESSAGE_MAP()
 
 
@@ -109,9 +133,17 @@ BOOL Csdl_CameraDlg::OnInitDialog()
 	// TODO: 在此添加额外的初始化代码
 	m_Csdl_CameraDlg = this;
 	m_CCamera.camRegCallBackPreviewImage(cbPreviewImage);
-	m_Csdl_Preview.sdl_Init();
-	m_Csdl_Preview.SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),640,480);
 
+#if SDLorD3D
+	m_Csdl_Preview.sdl_SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),HEIGHT,WIDTH);
+#else
+	//m_Cd3d_Preview.InitD3D(GetDlgItem(IDC_Preview)->GetSafeHwnd());
+	//m_Cd3d_Preview.CreateTexture();  
+	//m_Cd3d_Preview.InitGeometry();  
+	//RECT rect;
+	//GetDlgItem(IDC_Preview)->GetWindowRect(&rect);
+	m_Cd3d_Preview.InitD3D(GetDlgItem(IDC_Preview)->GetSafeHwnd(),HEIGHT,WIDTH);
+#endif
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -171,8 +203,12 @@ HCURSOR Csdl_CameraDlg::OnQueryDragIcon()
 void Csdl_CameraDlg::OnBnClickedbtnDrawrect()
 {
 	// TODO: 在此添加控件通知处理程序代码
-
+#if SDLorD3D
 	m_Csdl_Preview.sdl_DrawLine();
+#else
+
+#endif
+
 
 }
 
@@ -180,6 +216,30 @@ void Csdl_CameraDlg::OnBnClickedbtnDrawrect()
 void Csdl_CameraDlg::OnBnClickedbtnOpencamera()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_CCamera.OpenCamera(0,640,480);
+	m_CCamera.OpenCamera(0,HEIGHT,WIDTH);
 	m_CCamera.Start();
+}
+
+
+void Csdl_CameraDlg::OnBnClickedbtnZoomin()
+{
+	// TODO: 在此添加控件通知处理程序代码
+#if SDLorD3D
+	m_Csdl_Preview.sdl_ZoomIn();
+#else
+
+#endif
+
+}
+
+
+void Csdl_CameraDlg::OnBnClickedbtnZoomout()
+{
+	// TODO: 在此添加控件通知处理程序代码
+#if SDLorD3D
+	m_Csdl_Preview.sdl_ZoomOut();
+#else
+
+#endif
+	
 }

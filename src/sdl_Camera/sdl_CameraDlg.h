@@ -3,10 +3,11 @@
 //
 
 #pragma once
+#include "d3d_Preview.h"
 #include "Young_CCamera.h"
 #include "sdl_Preview.h"
-
-
+//#include "./test/PlayControl.h"
+#include "./Convert/ColourSpaceConvert.h"
 
 
 // Csdl_CameraDlg ¶Ô»°¿ò
@@ -37,6 +38,10 @@ protected:
 public:
 		CCamera m_CCamera;
 		Csdl_Preview m_Csdl_Preview;
+		Cd3d_Preview m_Cd3d_Preview;
+		CColourSpaceConvert m_CColourSpaceConvert;
 		afx_msg void OnBnClickedbtnDrawrect();
 		afx_msg void OnBnClickedbtnOpencamera();
+		afx_msg void OnBnClickedbtnZoomin();
+		afx_msg void OnBnClickedbtnZoomout();
 };

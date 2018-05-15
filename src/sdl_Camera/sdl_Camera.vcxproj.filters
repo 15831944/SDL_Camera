@@ -19,6 +19,12 @@
     <Filter Include="DX">
       <UniqueIdentifier>{3ca61c1b-6123-4d03-876c-e0102a5c6d51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DX9">
+      <UniqueIdentifier>{a91c5bfc-38da-4b69-9061-ef61b5cdd36a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Convert">
+      <UniqueIdentifier>{115c15dc-b77a-4c41-8024-706b373987de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -54,6 +60,12 @@
     <ClInclude Include="sdl_Preview.h">
       <Filter>SDL</Filter>
     </ClInclude>
+    <ClInclude Include="d3d_Preview.h">
+      <Filter>DX9</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert\ColourSpaceConvert.h">
+      <Filter>Convert</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sdl_Camera.cpp">
@@ -70,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="sdl_Preview.cpp">
       <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d_Preview.cpp">
+      <Filter>DX9</Filter>
+    </ClCompile>
+    <ClCompile Include="Convert\ColourSpaceConvert.cpp">
+      <Filter>Convert</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

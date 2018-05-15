@@ -60,7 +60,7 @@ public:
 	bool RenderStream();
 	bool RenderStream(CComPtr<IBaseFilter>& pGrabberFilter, GUID pinCategory);
 	//设置分辨率和格式  出图格式YOUNG
-	bool SetResolutionFormat(int nWidth,int nHeight,GUID subtype =MEDIASUBTYPE_YUY2/*MEDIASUBTYPE_MJPG*/,bool defaultType = false,
+	bool SetResolutionFormat(int nWidth,int nHeight,GUID subtype =MEDIASUBTYPE_RGB24/*MEDIASUBTYPE_YUY2*//*MEDIASUBTYPE_MJPG*/,bool defaultType = false,
 		GUID pinCategory = PIN_CATEGORY_CAPTURE);
 	bool Start();
 	// 设置分辨率

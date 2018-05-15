@@ -54,11 +54,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>strmbasd.lib</AdditionalDependencies>
+      <AdditionalDependencies>strmbasd.lib;</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -103,6 +104,8 @@
     <None Include="res\sdl_Camera.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Convert\ColourSpaceConvert.h" />
+    <ClInclude Include="d3d_Preview.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="sdl_Camera.h" />
     <ClInclude Include="sdl_CameraDlg.h" />
@@ -113,6 +116,8 @@
     <ClInclude Include="Young_SampleGrabberCB.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Convert\ColourSpaceConvert.cpp" />
+    <ClCompile Include="d3d_Preview.cpp" />
     <ClCompile Include="sdl_Camera.cpp" />
     <ClCompile Include="sdl_CameraDlg.cpp" />
     <ClCompile Include="sdl_Preview.cpp" />
