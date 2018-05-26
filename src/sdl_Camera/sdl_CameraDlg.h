@@ -8,7 +8,7 @@
 #include "sdl_Preview.h"
 //#include "./test/PlayControl.h"
 #include "./Convert/ColourSpaceConvert.h"
-
+#define  SDLorD3D 1
 
 // Csdl_CameraDlg ¶Ô»°¿ò
 class Csdl_CameraDlg : public CDialogEx
@@ -37,11 +37,18 @@ protected:
 
 public:
 		CCamera m_CCamera;
+
+#if SDLorD3D
 		Csdl_Preview m_Csdl_Preview;
+#else
 		Cd3d_Preview m_Cd3d_Preview;
+#endif
+
 		CColourSpaceConvert m_CColourSpaceConvert;
 		afx_msg void OnBnClickedbtnDrawrect();
 		afx_msg void OnBnClickedbtnOpencamera();
 		afx_msg void OnBnClickedbtnZoomin();
 		afx_msg void OnBnClickedbtnZoomout();
+
+	CEdit * m_edit;
 };

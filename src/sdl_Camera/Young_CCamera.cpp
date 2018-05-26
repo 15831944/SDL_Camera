@@ -183,6 +183,7 @@ bool CCamera::CreateSampleGrabber(CComPtr<IBaseFilter> &pGrabberFilter, CComPtr<
 //获得设备列表
 //名称
 //数量
+
 int CCamera::CameraCount()
 {
 	//std::vector<Device> vectorMDevice;
@@ -289,7 +290,7 @@ bool CCamera::SetResolutionFormat(int nWidth,int nHeight,GUID subtype,bool defau
 	return true;
 }
 
-bool CCamera::OpenCamera(int nCamID, int nWidth /*=320*/, int nHeight /*=240*/)
+bool CCamera::OpenCamera(int nCamID, int nWidth /*=320*/, int nHeight /*=240*/,int nsubtype/* = 1*/)
 {
 	HRESULT hrInitCom = CoInitialize(NULL);    
 	//////////////////////////////////////////////////////////////////
@@ -312,7 +313,7 @@ bool CCamera::OpenCamera(int nCamID, int nWidth /*=320*/, int nHeight /*=240*/)
 		return false;
 	}
 
-	//GUID guidSubtype = MEDIASUBTYPE_YUY2;
+
 
 	//////////////////////////////////////////////////////////////////
 	//Step 3 创建SampleGrabber Filter
@@ -327,7 +328,15 @@ bool CCamera::OpenCamera(int nCamID, int nWidth /*=320*/, int nHeight /*=240*/)
 	//Step 4 设置分辨率
 	//////////////////////////////////////////////////////////////////
 	//获取可以使用的分辨率和类型，有可能用户使用的数据有误
-	if(!this->SetResolutionFormat(nWidth,nHeight))
+	GUID guidSubtype ;
+	if (nsubtype == 1){
+		guidSubtype = MEDIASUBTYPE_YUY2;
+	}else{
+		guidSubtype = MEDIASUBTYPE_MJPG;
+	}
+	
+
+	if(!this->SetResolutionFormat(nWidth,nHeight,guidSubtype))
 	{
 		if(!hrInitCom)CoUninitialize();
 		return false;

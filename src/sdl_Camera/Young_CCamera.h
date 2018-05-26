@@ -1,11 +1,10 @@
 #pragma once
-
-
 #include <atlbase.h>
 #include "qedit.h"
 #include "dshow.h"
 #include <windows.h>
 
+#include <vector>
 
 #include <string>
 using namespace std ;
@@ -51,7 +50,9 @@ private:
 public:
 	static int CameraCount(); 
 	bool BindFilter(int nCameraIndex, IBaseFilter **pFilter);
-    bool OpenCamera(int nCamID, int nWidth =320, int nHeight =240);
+	//subtype = 1      YUY2
+	//subtyp   = 其他 MJPG
+    bool OpenCamera(int nCamID, int nWidth =320, int nHeight =240,int subtype = 1);
     bool InitGraph();
 	//创建SampleGrabber Filter
 	bool CreateSampleGrabber();
@@ -60,7 +61,7 @@ public:
 	bool RenderStream();
 	bool RenderStream(CComPtr<IBaseFilter>& pGrabberFilter, GUID pinCategory);
 	//设置分辨率和格式  出图格式YOUNG
-	bool SetResolutionFormat(int nWidth,int nHeight,GUID subtype =/*MEDIASUBTYPE_RGB24*//*MEDIASUBTYPE_YUY2*/MEDIASUBTYPE_MJPG,bool defaultType = false,
+	bool SetResolutionFormat(int nWidth,int nHeight,GUID subtype = MEDIASUBTYPE_MJPG,bool defaultType = false,
 		GUID pinCategory = PIN_CATEGORY_CAPTURE);
 	bool Start();
 	// 设置分辨率
@@ -75,4 +76,7 @@ public:
 		m_SampleGrabberCB.RegOutCallBack(fun);
 		return 1;
 	}
+
+	 //返回设备ID
+	 //int GetCamID(){return this->m_mdevice.m_nCamID;}
 };

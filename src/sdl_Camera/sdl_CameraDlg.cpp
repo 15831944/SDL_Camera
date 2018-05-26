@@ -9,7 +9,7 @@
 
 int HEIGHT = 1944;
 int WIDTH = 2592;
-#define  SDLorD3D 0
+
 
 
 #ifdef _DEBUG
@@ -123,7 +123,11 @@ BOOL Csdl_CameraDlg::OnInitDialog()
 	// TODO: 在此添加额外的初始化代码
 	m_Csdl_CameraDlg = this;
 	m_CCamera.camRegCallBackPreviewImage(cbPreviewImage);
+	int nCount  = m_CCamera.CameraCount();
 
+
+	m_edit = (CEdit*)GetDlgItem(IDC_EDIT_type);
+	m_edit->SetWindowText(L"0");
 #if SDLorD3D
 	m_Csdl_Preview.sdl_SetHwnd(GetDlgItem(IDC_Preview)->GetSafeHwnd(),WIDTH,HEIGHT);
 #else
@@ -203,7 +207,10 @@ void Csdl_CameraDlg::OnBnClickedbtnDrawrect()
 void Csdl_CameraDlg::OnBnClickedbtnOpencamera()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_CCamera.OpenCamera(0,WIDTH,HEIGHT);
+	CString str ;
+	m_edit->GetWindowText(str);
+	long ledit = _ttoi(str);
+	m_CCamera.OpenCamera(0,WIDTH,HEIGHT,ledit);
 	m_CCamera.Start();
 }
 
